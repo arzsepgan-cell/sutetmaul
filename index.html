@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>maul ulul azmi</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #dcdcdc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* ================= HALAMAN AWAL ================= */
+    .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card {
+      background: white;
+      width: 260px;
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .card p {
+      opacity: 0.7;
+    }
+
+    /* ================= HALAMAN CATATAN ================= */
+    .paper {
+      display: none;
+      width: 90%;
+      max-width: 600px;
+      height: 80vh;
+      background:
+        repeating-linear-gradient(
+          white,
+          white 28px,
+          #b7d7ff 29px
+        );
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      font-size: 22px;
+      line-height: 29px;
+      color: #1e293b;
+      overflow-y: auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 26px;
+    }
+
+    .date {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    .text {
+      white-space: pre-wrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HALAMAN AWAL -->
+  <div class="home" id="home">
+    <div class="card" onclick="openNote()">
+      <h2> buat lu maul sutet</h2></h2>
+      <p>pencet ini tet</p>
+    </div>
+  </div>
+
+  <!-- HALAMAN CATATAN -->
+  <div class="paper" id="paper">
+    <div class="header">
+      <div class="title">keren lu ul</div>
+      <div class="date">19 Januari 2026</div>
+    </div>
+
+    <div class="text" id="text"></div><span class="cursor">|</span>
+  </div>
+
+  <script>
+    const text = `
+apa kabar ul? gua ga bermaksud apa' dengan gua dateng lgi ke kehidupan lu, gua gaada niat jahat apa', mungkin datengnya gua sekarang lu bakal mikir yg aneh' karna mungkin posisinya gua jg masih sama yg sekarang🤷, gua cmn mau tau keadaan lu, gua liat' akhir' ini lu lagi sedih terus? maaf klo so tau soal hidup lu. stlh ini klo lu merasa ga nyaman dengan gua dateng lgi ke  hidup lu, lu bisa bilang langsung. lu klo lgi ngerasa sendiri, atau lgi ngerasa sedih, gaada seorang pun yg ada dihidup lu saat lu sedih, dridlu gua pernah bilang kan klo lu boleh dtg ke gua kpn aja? mungkin setelah gua bilang gini lu bakal ngatain gua brengsek lgi atau malah yg lebih, itu terserah lu, gua gaada hak buat ngelarang lu buat ga ngata'in gua. gua jg minta maaf ya klo dtgnya gua malah bikin lu jdi ke trigger (maybe) atau keinget hal' yg bikin lu sakit, maafin gua klo gua dateng ke kehidupan lu cuma buat ngasi luka yg besar, gua bener' minta maaf, gua tau mungkin luka yg gua kasi ga cukup dengan kata maaf doang? tapi cmn itu yg bisa gua lakuin sekarang ul, sebenernya banyak yg mau gua omongin sama lu, tpi takut lu bingung wkwkwk.  ya intinya itu aja ul, lu klo lgi ada apa' ya lu bisa cerita ke gua, klo lu gamau pun ga masalah, gua ga akan maksa.  
+    `;
+
+    let i = 0;
+    const speed = 60;
+
+    function openNote() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("paper").style.display = "block";
+      type();
+    }
+
+    function type() {
+      if (i < text.length) {
+        const textEl = document.getElementById("text");
+        const paper = document.getElementById("paper");
+
+        textEl.textContent += text.charAt(i);
+        paper.scrollTop = paper.scrollHeight;
+
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+  </script>
+
+</body>
+</html>
